@@ -66,4 +66,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'whenever', require: false, group: :development
+# gem 'whenever', require: false, group: :development
+gem 'octokit' # For interacting with the GitHub API
+gem 'dotenv-rails' # For environment variable management
