@@ -2,8 +2,7 @@ name: Auto Commit Daily
 
 on:
   schedule:
-    - cron: '*/1 * * * *' # Runs every 1 minute (for testing)
-  workflow_dispatch: # Allows manual triggering of the workflow
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 jobs:
   auto_commit:
@@ -12,8 +11,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }} # Ensures proper authentication for private repos
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
@@ -26,5 +23,5 @@ jobs:
       - name: Run Auto Commit Task
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_NAME: talhabutt7/pushpal
+          REPO_NAME: your-username/auto_commit_app
         run: bundle exec rake auto_commit:push_daily
